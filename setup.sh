@@ -47,6 +47,13 @@ MYIP=$(curl -sS ifconfig.me )
 echo "Checking VPS"
 IZIN=$(wget -qO- ipinfo.io/ip);
 
+# fix dns missing
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 1.1.1.1" >> /etc/resolv.conf
+echo "nameserver 2001:4860:4860::8888" >> /etc/resolv.conf
+echo "nameserver 2606:4700:4700::1111" >> /etc/resolv.conf
+
+
 rm -f setup.sh
 clear
 if [ -f "/etc/xray/domain" ]; then
